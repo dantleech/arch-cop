@@ -8,6 +8,7 @@ use Slim\Factory\AppFactory;
 
 require __DIR__ . '/../vendor/autoload.php';
 
+ini_set('html_errors', false);
 $container = new PhpactorContainer();
 $container->register(UserCreationService::class, fn () => new UserCreationService());
 AppFactory::setContainer($container);

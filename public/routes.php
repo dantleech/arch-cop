@@ -13,7 +13,6 @@ $app->post('/', function (Request $request, Response $response, array $args) {
 
     $user = $service->createUser($json['username'], $json['email']);
 
-
     $response->getBody()->write($user->id());
     return $response;
 });
