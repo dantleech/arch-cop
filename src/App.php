@@ -2,6 +2,7 @@
 
 namespace ArchCOP;
 
+use ArchCOP\Client\FileGetContentsRepositoryClient;
 use ArchCOP\Client\RepositoryClient;
 
 class App
@@ -13,7 +14,7 @@ class App
         $this->client = $client;
     }
 
-    public function run($org): void
+    public function run(string $org): void
     {
         foreach ($this->client->repositories($org) as $repo) {
             echo $repo->url() . "\n";

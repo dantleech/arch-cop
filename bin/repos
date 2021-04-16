@@ -2,8 +2,18 @@
 <?php
 
 use ArchCOP\App;
-use ArchCOP\Client\RepositoryClient;
+use ArchCOP\Client\CachingRepositoryClient;
+use ArchCOP\Client\FileGetContentsRepositoryClient;
+use ArchCOP\Client\MemoisedRepositoryClient;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-(new App(new RepositoryClient()))->run();
+$app = (new App(
+    new CachingRepositoryClient(
+        new MemoisedRepositoryClient(
+            new FileGetContentsRepositoryClient()
+        )
+    )
+));
+    
+$app->run('inviqa/repos');
