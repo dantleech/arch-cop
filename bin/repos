@@ -1,0 +1,9 @@
+#!/usr/bin/env php
+<?php
+
+use ArchCOP\App;
+use ArchCOP\Client\RepositoryClient;
+
+require __DIR__ . '/../vendor/autoload.php';
+
+(new App(new RepositoryClient()))->run();

@@ -1,0 +1,17 @@
+{
+    "name": "daniel/arch-cop",
+    "require": {
+        "phpunit/phpunit": "^9.5"
+    },
+    "authors": [
+        {
+            "name": "Daniel Leech",
+            "email": "dan.t.leech@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ArchCOP\\": "src/"
+        }
+    }
+}
