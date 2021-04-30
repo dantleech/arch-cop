@@ -1,7 +1,8 @@
 {
     "name": "daniel/arch-cop",
     "require": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "psr/container": "^2.0"
     },
     "authors": [
         {

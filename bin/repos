@@ -5,15 +5,27 @@ use ArchCOP\App;
 use ArchCOP\Client\CachingRepositoryClient;
 use ArchCOP\Client\FileGetContentsRepositoryClient;
 use ArchCOP\Client\MemoisedRepositoryClient;
+use ArchCOP\Client\RepositoryClient;
+use ArchCOP\Container\Container;
 
 require __DIR__ . '/../vendor/autoload.php';
 
-$app = (new App(
-    new CachingRepositoryClient(
+$app = new Container();
+$app->register(App::class, function (Container $container) {
+
+    return new App($container->get(RepositoryClient::class));
+
+});
+$app->register(RepositoryClient::class, function (Container $container) {
+    return new CachingRepositoryClient(
         new MemoisedRepositoryClient(
             new FileGetContentsRepositoryClient()
         )
-    )
-));
-    
-$app->run('inviqa/repos');
+    );
+});
+
+$app->get(App::class)->run('inviqa/repos');
+
+//$app = (new App(
+//));
+
